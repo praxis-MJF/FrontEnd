@@ -10,6 +10,28 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "format": "prettier --write src/"
   },
+  "keywords": [
+    "FrontEnd",
+    "Praxis",
+    "TodoList"
+  ],
+  "author": {
+    "name": "Jonatas Silva Peraza",
+    "email": "jonatassilvaperaza@gmail.com",
+    "url": "https://me.peraza.live"
+  },
+  "contributors": [
+    {
+      "name": "Matheus Vidal Zenere",
+      "email": "matheus.vidal.zenere@gmail.com",
+      "url": "https://github.com/iTzMvz"
+    },
+    {
+      "name": "Fernando Gutierrez Machado",
+      "email": "fegutierres.fg@gmail.com",
+      "url": "https://github.com/FeRevoltes"
+    }
+  ],
   "dependencies": {
     "pinia": "^2.1.7",
     "vue": "^3.4.21",
