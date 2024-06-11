@@ -1,43 +1,27 @@
 <script setup>
 import { useTodoStore } from '@/stores/stores.js'
-import { reactive } from 'vue';
+import { ref } from 'vue';
 
 const store = useTodoStore()
-console.log(store)
-const x = reactive({
-  id: '',
-  title: '',
+
+const list = ref(JSON.parse(localStorage.getItem('todoList')))
+console.log(list)
+const task = ref({
+  id: 1,
   description: '',
-  date: '',
-  time: '',
-  priority: '',
-  status: ''
 })
 
 </script>
 
 <template>
-<input type="number" v-model="x.id">
-<input type="text" v-model="x.title">
-<input type="text" v-model="x.description">
-<input type="text" v-model="x.date">
-<input type="text" v-model="x.time">
-<input type="text" v-model="x.priority">
-<input type="text" v-model="x.status">
+<input type="text" v-model="task.description">
 
-<button @click="store.addTodo(x)">Add Task</button>
+<button @click="store.addTodo(task)">Add Task</button>
 
 <ul>
-  <li v-for="todo in store.todolist">
-    {{todo.id}}
-    {{todo.title}}
-    {{todo.description}}
-    {{todo.date}}
-    {{todo.time}}
-    {{todo.priority}}
-    {{todo.status}}
-    <button @click="store.removeTodo(todo.id)">Remove Task</button>
-
+  <li v-for="(task, index) in list" :key="index">
+   {{ index + 1 }} - {{task.description}}    
+    <button @click="store.removeTodo(task.id)">X</button>
   </li>
 </ul>
 </template>

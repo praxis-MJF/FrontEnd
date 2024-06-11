@@ -3,26 +3,23 @@ import { defineStore } from 'pinia';
 
 export const useTodoStore = defineStore('TodoStore', () => {
 
-  const storedTodos = localStorage.getItem('todoL');
-  let todolist;
+  const storedTodos = localStorage.getItem('todoList');
+  const todolist = ref([{}]);
   
-  if (storedTodos !== 'undefined') {
+  if (storedTodos) {
     try {
-      todolist = ref(JSON.parse(storedTodos));
+      todolist.value = JSON.parse(storedTodos);
     } catch (error) {
       console.error('Error parsing stored todos:', error);
-      todolist = ref([]);
     }
-  } else {
-    todolist = ref([]);
   }
 
   function save() {
-    localStorage.setItem('todoL', JSON.stringify(todolist.value));
+    localStorage.setItem('todoList', JSON.stringify(todolist.value));
   }
 
-  function addTodo(todo) {
-    todolist.value.push(todo);
+  function addTodo(task) {
+    todolist.value.push(task);
     console.log(todolist)
     save();
   }
