@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node generate-sitemap.js",
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "format": "prettier --write src/"
@@ -34,6 +34,7 @@
   ],
   "dependencies": {
     "pinia": "^2.1.7",
+    "sitemap": "^8.0.0",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
   },
