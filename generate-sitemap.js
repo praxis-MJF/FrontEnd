@@ -1,6 +1,5 @@
 import { SitemapStream, streamToPromise } from 'sitemap';
 import { createWriteStream } from 'fs';
-import { createReadStream } from 'fs';
 
 const generateRobotsTxt = () => {
   return `User-agent: *
