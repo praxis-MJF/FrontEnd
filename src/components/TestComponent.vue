@@ -3,7 +3,7 @@ import { useTodoStore } from '@/stores/stores.js'
 import { ref } from 'vue';
 
 const store = useTodoStore()
-store.getTodos()
+
 const task = ref({
   title: '',
   description: '',
