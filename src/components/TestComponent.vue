@@ -10,7 +10,8 @@ const task = ref({
   completed: false,
   id: undefined
 })
-console.log(store.todolist)
+
+
 </script>
 
 <template>

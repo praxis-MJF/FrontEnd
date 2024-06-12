@@ -4,17 +4,16 @@ import { ref } from 'vue';
 export const useTodoStore = defineStore('TodoStore', () => {
   const todolist = ref([])
   function getTodos(){
-    let todos;
-    if (localStorage.getItem('todoList') !== undefined && localStorage.getItem('todoList') !== null){
-      todos = ref(JSON.parse(localStorage.getItem('todoList')))
-    }
-    else{
+    let todos = [];
+    if (localStorage.getItem('todoList')) {
+      todos = JSON.parse(localStorage.getItem('todoList'));
+    } else {
       localStorage.setItem('todoList', JSON.stringify([]));
-      getTodos();
     }
-    todolist.value = todos.value
-    return todos
+    todolist.value = todos;
+    return todos;
   }
+  
 
   function save() {
     localStorage.setItem('todoList', JSON.stringify(todolist.value));
@@ -37,8 +36,10 @@ export const useTodoStore = defineStore('TodoStore', () => {
     save();
   }
   function getId(){
-    const list = getTodos().value
-    return list.length + 1 
+    let id = localStorage.getItem('todoIdCounter') || 0;
+    id++;
+    localStorage.setItem('todoIdCounter', id);
+    return id;
   }
 
   return { addTodo, removeTodo, updateTodo, getTodos, todolist };
