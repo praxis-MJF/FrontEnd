@@ -3,25 +3,28 @@ import { useTodoStore } from '@/stores/stores.js'
 import { ref } from 'vue';
 
 const store = useTodoStore()
-
-const list = ref(JSON.parse(localStorage.getItem('todoList')))
-console.log(list)
+store.getTodos()
 const task = ref({
-  id: 1,
+  title: '',
   description: '',
+  completed: false,
+  id: undefined
 })
-
+console.log(store.todolist)
 </script>
 
 <template>
-<input type="text" v-model="task.description">
+
+<input v-model="task.title">
+
+<input v-model="task.description">
 
 <button @click="store.addTodo(task)">Add Task</button>
-
 <ul>
-  <li v-for="(task, index) in list" :key="index">
-   {{ index + 1 }} - {{task.description}}    
-    <button @click="store.removeTodo(task.id)">X</button>
+  <li v-for="todo in store.todolist" :key="todo.id">
+    {{ todo.title }}
+    {{ todo.id }}
+    <button @click="store.removeTodo(todo.id)">Remove</button>
   </li>
 </ul>
 </template>
