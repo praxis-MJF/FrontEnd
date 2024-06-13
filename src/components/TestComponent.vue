@@ -22,7 +22,8 @@ const task = ref({
     <li v-for="(item, index) in store.todolist" :key="index" class="task">
       {{ index + 1 }} - {{ item.title }}
       <div class="interactions">
-        <input type="checkbox" class="box" /> 
+        <input type="checkbox" class="box" v-model="item.completed" @change="store.save()" /> 
+        
         <button @click="store.removeTodo(item.id)" class="remove">X</button>
       </div>
     </li>

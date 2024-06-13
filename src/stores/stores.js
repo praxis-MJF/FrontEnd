@@ -15,7 +15,7 @@ export const useTodoStore = defineStore('TodoStore', () => {
     localStorage.setItem('todoList', JSON.stringify(todolist.value));
     getTodos();
   };
-
+  
   function addTodo(task) {
     task.id = getId();
     todolist.value.push(task);
@@ -39,5 +39,5 @@ export const useTodoStore = defineStore('TodoStore', () => {
     return id;
   };
   getTodos()
-  return { addTodo, removeTodo, updateTodo, getTodos, todolist };
+  return { addTodo, removeTodo, updateTodo, getTodos, todolist, save };
 });
